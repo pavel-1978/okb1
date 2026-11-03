@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Контакты - Отдел кибербезопасности</title>
+  <style>
+    :root {
+      --primary-color: #2c3e50;
+      --accent-color: #3498db;
+      --bg-color: #f4f7f6;
+      --card-bg: #ffffff;
+      --text-color: #333333;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 0;
+      line-height: 1.2;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      text-align: justify;
+    }
+
+    header {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 20px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 95px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      cursor: pointer;
+    }
+
+    .logo-link {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: inline-block;
+      line-6height: 0;
+      z-index: 10;
+    }
+
+    .header-logo {
+      height: 65px;         
+      width: auto;          
+      display: block;       
+      object-fit: contain;
+      transition: transform 0.2s ease;
+    }
+    
+    .logo-link:hover .header-logo {
+      transform: scale(1.03);
+    }
+
+    .header-text {
+      width: 100%;
+      text-align: center;
+      display: flex;
+      flex-direction: column;   
+      align-items: center; 
+    }
+
+    header h1 { 
+      margin: 0; 
+      font-size: 1.6rem; 
+      line-height: 1.2;
+      text-align: center;
+      color: #ffffff;
+      letter-spacing: 1px;
+      text-shadow: 0 0 8px rgba(52, 152, 219, 0.6), 0 0 2px rgba(255, 255, 255, 0.3);
+      transition: text-shadow 0.3s ease;
+    }
+
+    header:hover h1 {
+      text-shadow: 0 0 15px rgba(52, 152, 219, 1), 
+                   0 0 25px rgba(52, 152, 219, 0.6), 
+                   0 0 2px rgba(255, 255, 255, 0.8);
+    }
+
+    nav {
+      background-color: #34495e;
+      padding: 10px 0;
+      text-align: center;
+    }
+    
+    nav a {
+      color: white;
+      text-decoration: none !important;
+      margin: 0 15px;
+      font-weight: 500;
+      display: inline-block;
+      position: relative;
+      padding: 5px 0;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      transform: scaleX(0);
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: var(--accent-color);
+      transform-origin: bottom right;
+      transition: transform 0.3s ease-out;
+    }
+
+    nav a:hover::after, nav a.active::after {
+      transform: scaleX(1);
+      transform-origin: bottom left;
+    }
+
+    main.container {
+      flex: 1;
+      width: 100%;
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    .section {
+      background-color: var(--card-bg);
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    }
+
+    .section h2 {
+      color: var(--primary-color);
+      border-bottom: 2px solid var(--accent-color);
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+      margin-top: 0;
+      line-height: 1.2;
+      text-align: center !important; 
+    }
+    
+    .contact-card {
+      background-color: #f8f9fa;
+      border-left: 4px solid var(--accent-color);
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 4px;
+    }
+    
+    .contact-card h3 { 
+      margin-top: 0; 
+      margin-bottom: 10px;
+      color: var(--primary-color); 
+      line-height: 1.2;
+      font-size: 1rem !important;
+      letter-spacing: -0.1px;
+    }
+    
+    .contact-card ul { 
+      list-style: none; 
+      padding: 0; 
+    }
+    
+    .contact-card li { 
+      margin-bottom: 8px; 
+      line-height: 1.2 !important;
+      text-align: left;
+    }
+    
+    .contact-card li:last-child {
+      margin-bottom: 0;
+    }
+
+    .contact-card a { 
+      color: var(--accent-color); 
+      text-decoration: none; 
+    }
+    
+    .contact-card a:hover { 
+      text-decoration: underline; 
+    }
+
+    footer {
+      background-color: var(--primary-color);
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: auto;
+      font-size: 0.9rem;
+    }
+
+    footer p {
+      margin: 0;
+      line-height: 1.2 !important;
+      text-indent: 0 !important;
+      text-align: center !important;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        padding: 15px;
+        flex-direction: column !important;
+        justify-content: center;
+        min-height: auto;
+      }
+      .logo-link {
+        position: static; 
+        transform: none;
+        margin-bottom: 10px;
+      }
+      .header-logo {
+        height: 50px;
+      }
+      header h1 {
+        font-size: 1.2rem; 
+      }
+      nav a {
+        display: inline-block; 
+        margin: 5px 10px;
+      }
+      nav a::after {
+        display: none;
+      }
+      nav a:hover {
+        color: var(--accent-color);
+      }
+      .section {
+        padding: 20px;
+      }
+      .contact-card h3 {
+        font-size: 1rem !important;
+        letter-spacing: normal;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="https://bspu.by" class="logo-link" title="БГПУ им. М. Танка">
+      <img src="img/bspu.png" alt="Логотип БГПУ" class="header-logo">
+    </a>
+    <div class="header-text">
+      <h1>Отдел кибербезопасности</h1>
+    </div>
+  </header>
+
+  <nav aria-label="Основная навигация">
+    <a href="index.html">Главная</a>
+    <a href="inf.html">Информация</a>
+    <a href="contakt.html" class="active">Контакты</a>
+  </nav>
+
+  <main class="container">
+    <div class="section">
+      <h2>Контакты</h2>
+      
+      <div class="contact-card">
+        <h3>Отдел кибербезопасности</h3>
+        <ul>
+          <li><strong>Адрес:</strong> учебный корпус №2, кабинет 02</li>
+          <li><strong>Телефон:</strong> 567 (внутренний номер)</li>
+          <li><strong>Email:</strong> <a href="mailto:kiber@bspu.by">kiber@bspu.by</a></li>
+        </ul>
+      </div>
+
+      <div class="contact-card">
+        <h3>Специалист по внутреннему контролю за обработкой персональных данных</h3>
+        <ul>
+          <li><strong>Адрес:</strong> учебный корпус №2, кабинет 03б</li>
+          <li><strong>Телефон:</strong> 444 (внутренний номер)</li>
+          <li><strong>Email:</strong> <a href="mailto:dpo@bspu.by">dpo@bspu.by</a></li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Отдел кибербезопасности БГПУ им. М. Танка</p>
+  </footer>
+
+</body>
+</html>

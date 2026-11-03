@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Главная - Отдел кибербезопасности</title>
+  <style>
+    :root {
+      --primary-color: #2c3e50;
+      --accent-color: #3498db;
+      --bg-color: #f4f7f6;
+      --card-bg: #ffffff;
+      --text-color: #333333;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 0;
+      line-height: 1.2;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      text-align: justify;
+    }
+
+    header {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 20px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 95px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      cursor: pointer;
+    }
+
+    .logo-link {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: inline-block;
+      line-height: 0;
+      z-index: 10;
+    }
+
+    .header-logo {
+      height: 65px;         
+      width: auto;          
+      display: block;       
+      object-fit: contain;
+      transition: transform 0.2s ease;
+    }
+    
+    .logo-link:hover .header-logo {
+      transform: scale(1.03);
+    }
+
+    .header-text {
+      width: 100%;
+      text-align: center;
+      display: flex;
+      flex-direction: column;   
+      align-items: center; 
+    }
+
+    header h1 { 
+      margin: 0; 
+      font-size: 1.6rem; 
+      line-height: 1.2;
+      text-align: center;
+      color: #ffffff;
+      letter-spacing: 1px;
+      text-shadow: 0 0 8px rgba(52, 152, 219, 0.6), 0 0 2px rgba(255, 255, 255, 0.3);
+      transition: text-shadow 0.3s ease;
+    }
+
+    header:hover h1 {
+      text-shadow: 0 0 15px rgba(52, 152, 219, 1), 
+                   0 0 25px rgba(52, 152, 219, 0.6), 
+                   0 0 2px rgba(255, 255, 255, 0.8);
+    }
+
+    nav {
+      background-color: #34495e;
+      padding: 10px 0;
+      text-align: center;
+    }
+    
+    nav a {
+      color: white;
+      text-decoration: none !important;
+      margin: 0 15px;
+      font-weight: 500;
+      display: inline-block;
+      position: relative;
+      padding: 5px 0;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      transform: scaleX(0);
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: var(--accent-color);
+      transform-origin: bottom right;
+      transition: transform 0.3s ease-out;
+    }
+
+    nav a:hover::after, nav a.active::after {
+      transform: scaleX(1);
+      transform-origin: bottom left;
+    }
+
+    main.container {
+      flex: 1;
+      width: 100%;
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    .section {
+      background-color: var(--card-bg);
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+      margin-bottom: 25px; 
+    }
+
+    .section h2 {
+      color: var(--primary-color);
+      border-bottom: 2px solid var(--accent-color);
+      padding-bottom: 10px;
+      margin-bottom: 15px;
+      line-height: 1.2;
+      text-align: left;
+    }
+
+    .center-title {
+      text-align: center !important;
+    }
+
+    h3 {
+      color: var(--primary-color);
+      margin-top: 5px; 
+      padding-bottom: 8px; 
+      border-bottom: 2px solid var(--accent-color); 
+      margin-bottom: 12px; 
+      line-height: 1.2;
+      text-align: left; 
+      font-size: 1.15rem !important;
+    }
+
+    p {
+      margin-bottom: 12px;
+      line-height: 1.2 !important; 
+      text-align: justify;
+      text-indent: 20px; 
+    }
+
+    .section-img {
+      width: 100%;       
+      height: auto;      
+      display: block;    
+      margin-top: 20px;  
+      object-fit: cover; 
+      border-radius: 4px;
+    }
+
+    ul {
+      list-style-type: none;
+      padding-left: 25px !important;
+      margin-bottom: 1.2rem;
+    }
+
+    li {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 6px;
+      line-height: 1.2 !important; 
+      text-align: justify; 
+      text-indent: 0;
+    }
+
+    li::before {
+      content: "•";
+      color: #0056b3; 
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+      font-size: 1.4rem; 
+      top: -4px;        
+    }
+
+    .quote-text {
+      font-style: normal;
+      border-left: 3px solid var(--primary-color);
+      padding-left: 15px;
+      margin-top: 25px;
+      color: #555;
+    }
+
+    .quote-text p {
+      margin-bottom: 12px !important; 
+      line-height: 1.2 !important;
+      text-align: justify;
+      text-indent: 0 !important; 
+    }
+
+    .quote-text p:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    footer {
+      background-color: var(--primary-color);
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: auto;
+      font-size: 0.9rem;
+    }
+
+    footer p {
+      margin: 0;
+      line-height: 1.2 !important;
+      text-indent: 0 !important;
+      text-align: center !important;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        padding: 15px;
+        flex-direction: column !important;
+        justify-content: center;
+        min-height: auto;
+      }
+      .logo-link {
+        position: static; 
+        transform: none;
+        margin-bottom: 10px;
+      }
+      .header-logo {
+        height: 50px; 
+      }
+      header h1 {
+        font-size: 1.2rem; 
+      }
+      nav a {
+        display: inline-block; 
+        margin: 5px 10px;
+      }
+      nav a::after {
+        display: none;
+      }
+      nav a:hover {
+        color: var(--accent-color);
+      }
+      .section {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="https://bspu.by" class="logo-link" title="БГПУ им. М. Танка">
+      <img src="img/bspu.png" alt="Логотип БГПУ" class="header-logo">
+    </a>
+    <div class="header-text">
+      <h1>Отдел кибербезопасности</h1>
+    </div>
+  </header>
+
+  <nav aria-label="Основная навигация">
+    <a href="index.html" class="active">Главная</a>
+    <a href="inf.html">Информация</a>
+    <a href="contakt.html">Контакты</a>
+  </nav>
+
+  <main class="container">
+    
+    <div class="section">
+      <h2 class="center-title">Об отделе</h2>
+      <p>Наш отдел – не просто брандмауэры и логи. Это пульс цифровой экосистемы университета. Здесь хаос превращается в порядок. Шёпот атак фиксируется задолго до того, как он станет криком. То, что скрыто во тьме данных от обычных глаз, для нас – очевидный маршрут угроз. Безопасность здесь – не замок на двери. Это воздух, которым дышит сеть.</p>
+    </div>
+
+    <div class="section">
+      <h3>Наши задачи:</h3>
+      <ul>
+        <li>защита корпоративных систем и сервисов;</li>
+        <li>выявление уязвимостей и контроль их устранения;</li>
+        <li>мониторинг инцидентов безопасности;</li>
+        <li>разработка и внедрение политик и процедур защиты информации.</li>
+      </ul>
+
+      <div class="quote-text">
+        <p>Где заканчивается контроль и начинается доверие? Мы делаем контроль невидимым, чтобы доверие было абсолютным. Обеспечивая стабильность цифровой экосистемы университета, мы стараемся защитить саму идею открытого знания. Невидимо. Постоянно.</p>
+        <p>Отдел кибербезопасности обеспечивает защиту цифровых активов, данных и инфраструктуры университета от внешних и внутренних угроз.</p>
+        <p>Мы выстраиваем систему безопасности, которая помогает предотвращать инциденты, быстро выявлять риски и снижать возможный ущерб.</p>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Отдел кибербезопасности БГПУ им. М. Танка</p>
+  </footer>
+
+</body>
+</html>
